@@ -1,0 +1,18 @@
+Display breadcrumbs using bootstrap CSS, based on URL decomposition.
+
+    Requires Twitter Bootstrap 2.
+
+    Usage:
+
+    {% load breadcrumbs %}
+
+    {% url_breadcrumbs %}
+
+    Options:
+
+    divider: default = '/'
+
+    home: default='Home'
+
+    eg: {% url_breadcrumbs divider='&gt;' home='Dashboard' %}
+
