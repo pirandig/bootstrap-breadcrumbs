@@ -25,7 +25,7 @@ def url_breadcrumbs(context, divider='/', home='Dashboard'):
     eg: {% url_breadcrumbs divider='&gt;' home='Dashboard' %}
     """
     request = context['request']
-    home = ['<ul class="breadcrumb"><li><a href="/" title="%s"><i class="icon-home"></i> %s</a> <span class="divider">%s</span></li>' % (home, home, divider),]
+    home = ['<ul class="breadcrumb"><li><a href="/" title="%s">%s</a> <span class="divider">%s</span></li>' % (home, home, divider),]
     links = request.path_info.strip('/').split('/')
     bread = []
     total = len(links)-1
@@ -35,9 +35,9 @@ def url_breadcrumbs(context, divider='/', home='Dashboard'):
             this_url = "/".join(bread)
             sub_link = re.sub('-', ' ', link)
             if not i == total:
-                tlink = '<li><a href="/%s/" title="%s">%s</a> <span class="divider">%s</span></li>' % (this_url, sub_link.capitalize(), sub_link.capitalize(), divider)
+                tlink = '<li><a href="/%s/" title="%s">%s</a> <span class="divider">%s</span></li>' % (this_url, sub_link, sub_link, divider)
             else:
-                tlink = '<li>%s</li>' % sub_link.capitalize()
+                tlink = '<li>%s</li>' % sub_link
             home.append(tlink)
     bcrumb = "".join(home)
     return mark_safe(bcrumb + '</ul>')
